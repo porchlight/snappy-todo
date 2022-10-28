@@ -1,0 +1,5 @@
+name: Snappy Common
+description: Custom functionality regarding the todo list.
+type: module
+package: 'Snappy'
+core_version_requirement: ^8 || ^9

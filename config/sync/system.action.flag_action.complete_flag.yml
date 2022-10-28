@@ -1,0 +1,15 @@
+uuid: 6d57d9bf-d2c9-488c-aac0-e88f3693e5e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.complete
+  module:
+    - flag
+id: flag_action.complete_flag
+label: 'Mark as complete'
+type: node
+plugin: 'flag_action:complete_flag'
+configuration:
+  flag_id: complete
+  flag_action: flag

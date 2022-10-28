@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for Snappy Common.
+ */
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function snappy_common_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'theme') {
+    $group = $implementations['snappy_common'];
+    unset($implementations['snappy_common']);
+    $implementations['snappy_common'] = $group;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function snappy_common_theme($existing, $type, $theme, $path) {
+  $module_path = drupal_get_path('module', 'snappy_common');
+  return drupal_find_theme_templates($existing, '.html.twig', $module_path);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for FORM_ID().
+ */
+function snappy_common_form_node_form_alter(&$form, &$form_state, $form_id) {
+  // dump($form_id);
+  if ($form_id == 'node_todo_form') {
+    $form['revision_information']['#access'] = FALSE;
+    unset($form['meta']);
+  }
+}

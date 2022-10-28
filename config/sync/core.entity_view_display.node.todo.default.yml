@@ -1,0 +1,20 @@
+uuid: eb099e34-a4b8-4658-aca9-c450d1ba06b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.todo
+  module:
+    - user
+id: node.todo.default
+targetEntityType: node
+bundle: todo
+mode: default
+content:
+  flag_complete:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  links: true

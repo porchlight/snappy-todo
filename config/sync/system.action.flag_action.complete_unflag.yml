@@ -1,0 +1,15 @@
+uuid: 952747c4-30e4-4e0b-aa1e-c47d9ff07126
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.complete
+  module:
+    - flag
+id: flag_action.complete_unflag
+label: 'Mark as incomplete'
+type: node
+plugin: 'flag_action:complete_unflag'
+configuration:
+  flag_id: complete
+  flag_action: unflag
