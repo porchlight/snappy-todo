@@ -1,0 +1,6 @@
+nvr_content_type:
+  todo: '1'
+nvr_redirect:
+  todo: /todos
+nvr_no_exception:
+  todo: '1'

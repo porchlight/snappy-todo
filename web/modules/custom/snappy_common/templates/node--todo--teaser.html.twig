@@ -26,8 +26,8 @@
         {{ label }}
       </a>
     </h2>
-    <a href="{{ path('snappy_common.delete', {'node': node.id}) }}">
-        {{ 'Delete'|t }}
+    <a href="{{ path('entity.node.delete_form', {'node': node.id}) }}" class="use-ajax" data-dialog-type="modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}">
+      {{ 'Delete'|t }}
     </a>
   </div>
 </article>

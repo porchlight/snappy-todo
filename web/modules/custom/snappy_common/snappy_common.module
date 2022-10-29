@@ -51,9 +51,6 @@ function snappy_common_form_node_form_alter(&$form, FormStateInterface $form_sta
       $form['actions'][$action]['#submit'][] = 'snappy_common_form_node_form_submit';
     }
   }
-
-  // Redirect to the todo's/homepage.
-  $form_state->setRedirect('<front>');
 }
 
 /**
