@@ -2,15 +2,12 @@
 
 namespace Drupal\snappy_common\Controller;
 
-use Drupal\Core\Access\AccessResult;
-use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\node\NodeInterface;
 use Drupal\snappy_common\Service\TodoHelperServiceInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -53,6 +50,13 @@ class DeleteCompleteTodosController implements ContainerInjectionInterface {
   protected Connection $database;
 
   /**
+   * Messenger service.
+   *
+   * @var \Drupal\Core\MessengerInterface
+   */
+  protected MessengerInterface $messenger;
+
+  /**
    * Constructor.
    *
    * @param \Drupal\snappy_common\TodoHelperServiceInterface $todo_helper
@@ -61,15 +65,19 @@ class DeleteCompleteTodosController implements ContainerInjectionInterface {
    *   The current user.
    * @param \Drupal\Core\Database\Connection $database_connection
    *   The database connection.
+   * @param \Drupal\Core\MessengerInterface $messenger_service
+   *   The messenger service.
    */
   public function __construct(
     TodoHelperServiceInterface $todo_helper,
     AccountProxyInterface $current_user,
     Connection $database_connection,
+    MessengerInterface $messenger_service,
   ) {
     $this->todoHelper = $todo_helper;
     $this->currentUser = $current_user;
     $this->database = $database_connection;
+    $this->messenger = $messenger_service;
   }
 
   /**
@@ -93,13 +101,13 @@ class DeleteCompleteTodosController implements ContainerInjectionInterface {
     // Use a query.
     $query = $this->database
       ->select('flagging', 'f')
-      ->fields('f',['entity_id'])
+      ->fields('f', ['entity_id'])
       ->condition('flag_id', 'complete')
       ->condition('uid', $this->currentUser->id());
     $result = $query->execute()->fetchCol();
     if ($result) {
       $this->todoHelper->delete($result);
-      \Drupal::messenger()->addMessage($this->t('Cleared all complete todos!'), 'status');
+      $this->messenger->addMessage($this->t('Cleared all complete todos!'));
     }
     // Get all the completed todos.
     return $this->todoHelper->redirectToTodos();

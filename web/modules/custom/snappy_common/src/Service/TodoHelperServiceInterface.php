@@ -2,7 +2,6 @@
 
 namespace Drupal\snappy_common\Service;
 
-use Drupal\node\NodeInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**

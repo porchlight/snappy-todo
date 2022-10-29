@@ -4,11 +4,10 @@ namespace Drupal\snappy_common\Service;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Url;
-use Drupal\node\NodeInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
- * Todo helper service class for snappy_common.
+ * Helper service class for snappy_common todos.
  */
 class TodoHelperService implements TodoHelperServiceInterface {
 

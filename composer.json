@@ -36,8 +36,8 @@
             "composer/installers": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "topfloor/composer-cleanup-vcs-dirs": true
+            "topfloor/composer-cleanup-vcs-dirs": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
         },
         "sort-packages": true
     },
