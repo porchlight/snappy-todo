@@ -1,0 +1,6 @@
+services:
+  snappy_common.redirect:
+    class: Drupal\snappy_common\EventSubscriber\ForceLoginSubscriber
+    arguments: ['@state', '@current_user', '@path.current']
+    tags:
+      - { name: event_subscriber }

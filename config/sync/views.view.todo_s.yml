@@ -277,7 +277,133 @@ display:
       tags: {  }
   page_1:
     id: page_1
-    display_title: Incomplete
+    display_title: All
+    display_plugin: page
+    position: 1
+    display_options:
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            todo: todo
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        relationships: false
+        filters: false
+        filter_groups: false
+      relationships:
+        flag_relationship:
+          id: flag_relationship
+          table: node_field_data
+          field: flag_relationship
+          relationship: none
+          group_type: group
+          admin_label: Flags
+          entity_type: node
+          plugin_id: flag_relationship
+          required: false
+          flag: complete
+          user_scope: current
+      display_description: ''
+      display_extenders: {  }
+      path: todos
+      menu:
+        type: 'default tab'
+        title: All
+        description: ''
+        weight: 0
+        expanded: false
+        menu_name: main
+        parent: ''
+        context: '0'
+      tab_options:
+        type: none
+        title: Todos
+        description: ''
+        weight: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  page_2:
+    id: page_2
+    display_title: Complete
+    display_plugin: page
+    position: 1
+    display_options:
+      title: 'Todo''s'
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: 'You have''t completed any todo''s!'
+          tokenize: false
+      defaults:
+        empty: false
+        title: false
+      display_description: ''
+      display_extenders: {  }
+      path: todos/complete
+      menu:
+        type: tab
+        title: Complete
+        description: ''
+        weight: 10
+        expanded: false
+        menu_name: main
+        parent: ''
+        context: '0'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  page_3:
+    id: page_3
+    display_title: Active
     display_plugin: page
     position: 1
     display_options:
@@ -369,10 +495,10 @@ display:
           user_scope: current
       display_description: ''
       display_extenders: {  }
-      path: todos
+      path: todos/active
       menu:
-        type: 'default tab'
-        title: 'Todo''s'
+        type: tab
+        title: Active
         description: ''
         weight: 0
         expanded: false
@@ -380,55 +506,10 @@ display:
         parent: ''
         context: '0'
       tab_options:
-        type: none
-        title: Todos
-        description: ''
-        weight: 0
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url
-        - url.query_args
-        - user
-        - 'user.node_grants:view'
-        - user.permissions
-      tags: {  }
-  page_2:
-    id: page_2
-    display_title: Complete
-    display_plugin: page
-    position: 1
-    display_options:
-      title: 'Complete Todo''s'
-      empty:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: text_custom
-          empty: true
-          content: 'You have''t completed any todo''s!'
-          tokenize: false
-      defaults:
-        empty: false
-        title: false
-      display_description: ''
-      display_extenders: {  }
-      path: todos/complete
-      menu:
         type: tab
-        title: Complete
+        title: Active
         description: ''
         weight: 0
-        expanded: false
-        menu_name: main
-        parent: ''
-        context: '0'
     cache_metadata:
       max-age: -1
       contexts:
