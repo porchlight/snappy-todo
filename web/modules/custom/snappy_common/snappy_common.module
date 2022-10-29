@@ -1,5 +1,9 @@
 <?php
 
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\snappy_common\Entity\TodoNode;
+use Drupal\views\ViewExecutable;
+
 /**
  * @file
  * Hook implementations for Snappy Common.
@@ -27,10 +31,45 @@ function snappy_common_theme($existing, $type, $theme, $path) {
 /**
  * Implements hook_form_FORM_ID_alter() for FORM_ID().
  */
-function snappy_common_form_node_form_alter(&$form, &$form_state, $form_id) {
-  // dump($form_id);
-  if ($form_id == 'node_todo_form') {
-    $form['revision_information']['#access'] = FALSE;
-    unset($form['meta']);
+function snappy_common_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $node = $form_state->getFormObject()->getEntity();
+  // Only apply this to todo nodes.
+  if ($node->bundle() != 'todo') {
+    return;
+  }
+
+  // Hide the extra options to make it look sleek.
+  $form['revision_information']['#access'] = FALSE;
+  unset($form['meta']);
+
+  // Add our submit handler.
+  foreach (array_keys($form['actions']) as $action) {
+    if ($action != 'preview'
+      && isset($form['actions'][$action]['#type'])
+      && $form['actions'][$action]['#type'] === 'submit'
+    ) {
+      $form['actions'][$action]['#submit'][] = 'snappy_common_form_node_form_submit';
+    }
+  }
+
+  // Redirect to the todo's/homepage.
+  $form_state->setRedirect('<front>');
+}
+
+/**
+ * Submit handler for the todo form.
+ */
+function snappy_common_form_node_form_submit($form, FormStateInterface $form_state) {
+  // Redirect to the todo's/homepage.
+  $form_state->setRedirect('<front>');
+}
+
+
+/**
+* Implements hook_views_pre_render().
+*/
+function snappy_common_views_pre_render(ViewExecutable $view) {
+  if (isset($view) && ($view->storage->id() == 'todo_s')) {
+    $view->element['#attached']['library'][] = 'snappy_common/todos';
   }
 }

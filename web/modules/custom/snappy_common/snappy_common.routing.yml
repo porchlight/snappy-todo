@@ -1,0 +1,10 @@
+snappy_common.delete:
+  path: '/todos/delete/{node}'
+  defaults:
+    _controller: '\Drupal\snappy_common\Controller\DeleteTodoController::delete'
+  requirements:
+    _custom_access: '\Drupal\snappy_common\Controller\DeleteTodoController::access'
+  options:
+    parameters:
+      node:
+        type: entity:node

@@ -9,10 +9,10 @@ label: Complete
 bundles: {  }
 entity_type: node
 global: false
-flag_short: 'Mark as complete'
+flag_short: 'Mark as done'
 flag_long: ''
 flag_message: ''
-unflag_short: 'Mark as incomplete'
+unflag_short: 'Mark as not done'
 unflag_long: ''
 unflag_message: ''
 unflag_denied_text: ''

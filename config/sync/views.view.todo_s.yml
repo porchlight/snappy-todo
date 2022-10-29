@@ -126,18 +126,7 @@ display:
       cache:
         type: tag
         options: {  }
-      empty:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: text_custom
-          empty: true
-          content: 'You have no todo''s!'
-          tokenize: false
+      empty: {  }
       sorts:
         created:
           id: created
@@ -262,7 +251,18 @@ display:
           empty: true
           content: "<a href=\"/node/add/todo\" class=\"use-ajax\" data-dialog-type=\"modal\" data-dialog-options='{\"width\":\"50%\"}' >\r\nCreate new todo\r\n</a>"
           tokenize: false
-      footer: {  }
+      footer:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: "<span class=\"todo-count visually-hidden\"></span>\r\n<ul class=\"filters\">\r\n<li><a class=\"selected\" href=\"#all\">All</a></li>\r\n<li><a href=\"#active\">Active</a></li>\r\n<li><a href=\"#completed\">Completed</a></li>\r\n</ul>\r\n<a class=\"clear-completed visually-hidden\" href=\"/todos/clear-all\">Clear completed</a>"
+          tokenize: false
       display_extenders: {  }
     cache_metadata:
       max-age: -1
@@ -362,6 +362,7 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      enabled: false
       title: 'Todo''s'
       empty:
         area_text_custom:
@@ -407,6 +408,7 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      enabled: false
       filters:
         status:
           id: status

@@ -21,7 +21,7 @@
         "drupal/core-project-message": "^9.4",
         "drupal/core-recommended": "^9.4",
         "drupal/flag": "^4.0@beta",
-        "drupal/redirect_after_login": "^2.7",
+        "drupal/require_login": "^3.0",
         "drush/drush": "^11.3",
         "topfloor/composer-cleanup-vcs-dirs": "^1.1"
     },

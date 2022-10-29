@@ -1,0 +1,9 @@
+todos:
+  css:
+    theme:
+      css/todos.css: {}
+  js:
+    js/todos.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

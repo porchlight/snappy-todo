@@ -34,7 +34,7 @@ module:
   path: 0
   path_alias: 0
   rdf: 0
-  redirect_after_login: 0
+  require_login: 0
   search: 0
   snappy_common: 0
   system: 0

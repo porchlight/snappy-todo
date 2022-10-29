@@ -1,6 +1,4 @@
 services:
-  snappy_common.redirect:
-    class: Drupal\snappy_common\EventSubscriber\ForceLoginSubscriber
-    arguments: ['@state', '@current_user', '@path.current']
-    tags:
-      - { name: event_subscriber }
+  snappy_common.todo_helper:
+    class: Drupal\snappy_common\Service\TodoHelperService
+    arguments: ['@entity_type.manager']

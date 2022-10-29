@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Easily require user authentication on all pages.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function require_login_help($route_name, RouteMatchInterface $route_match): string {
+  $build = [];
+  if ($route_name === 'help.page.require_login') {
+    $build[] = [
+      '#markup' => '<h2>' . t('Documentation') . '</h2>',
+    ];
+    $build[] = [
+      '#type' => 'link',
+      '#title' => 'https://git.drupalcode.org/project/require_login/-/blob/3.x/README.md',
+      '#url' => Url::fromUri('https://git.drupalcode.org/project/require_login/-/blob/3.x/README.md'),
+    ];
+  }
+  return \Drupal::service('renderer')->render($build);
+}

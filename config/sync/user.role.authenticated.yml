@@ -4,10 +4,13 @@ status: true
 dependencies:
   config:
     - filter.format.basic_html
+    - node.type.todo
   module:
     - comment
     - contact
     - filter
+    - flag
+    - node
     - search
     - system
 _core:
@@ -20,7 +23,12 @@ permissions:
   - 'access comments'
   - 'access content'
   - 'access site-wide contact form'
+  - 'create todo content'
+  - 'delete own todo content'
+  - 'edit own todo content'
+  - 'flag complete'
   - 'post comments'
   - 'search content'
   - 'skip comment approval'
+  - 'unflag complete'
   - 'use text format basic_html'
