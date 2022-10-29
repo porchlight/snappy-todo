@@ -88,6 +88,7 @@ class DeleteCompleteTodosController implements ContainerInjectionInterface {
       $container->get('snappy_common.todo_helper'),
       $container->get('current_user'),
       $container->get('database'),
+      $container->get('messenger'),
     );
   }
 
@@ -105,10 +106,13 @@ class DeleteCompleteTodosController implements ContainerInjectionInterface {
       ->condition('flag_id', 'complete')
       ->condition('uid', $this->currentUser->id());
     $result = $query->execute()->fetchCol();
+
+    // If we have any results, lets delete them.
     if ($result) {
       $this->todoHelper->delete($result);
       $this->messenger->addMessage($this->t('Cleared all complete todos!'));
     }
+
     // Get all the completed todos.
     return $this->todoHelper->redirectToTodos();
   }

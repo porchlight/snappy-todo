@@ -41,7 +41,6 @@ function snappy_common_form_node_form_alter(&$form, FormStateInterface $form_sta
   // Hide the extra options to make it look sleek.
   $form['revision_information']['#access'] = FALSE;
   unset($form['meta']);
-
   // Add our submit handler.
   foreach (array_keys($form['actions']) as $action) {
     if ($action != 'preview'

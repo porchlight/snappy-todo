@@ -39,6 +39,11 @@
     }
   }
 
+  /**
+   * Check if there are any todo's left to do. If there are then show how
+   * many items left in the .todo-count container. If there are completed
+   * todos then show the "Clear completed" link.
+   */
   function checkIfEmpty() {
     if ($('.view-id-todo_s .views-row').length) {
       var done = $('.view-id-todo_s .views-row .action-unflag').length;
@@ -57,6 +62,9 @@
     }
   }
 
+  /**
+   * Update the todo count text depending on how many items are left.
+   */
   function updateTodoCount() {
     // Count how many left.
     var left = $('.view-id-todo_s .views-row .action-flag').length;
