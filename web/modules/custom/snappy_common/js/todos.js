@@ -12,6 +12,12 @@
         $(window).on('load ajaxComplete', function () {
           checkIfEmpty();
 
+          // Switch which "view" tab is selected.
+          $('.view-id-todo_s .filters a').on('click', function() {
+            $('.view-id-todo_s .filters a').removeClass('selected');
+            $(this).addClass('selected');
+          });
+
           // On click of "all" show everything.
           $('.view-id-todo_s a[href*="#all"]').on('click', function () {
             $('.view-id-todo_s .views-row').removeClass('visually-hidden');
