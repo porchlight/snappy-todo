@@ -11,9 +11,12 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 interface TodoHelperServiceInterface {
 
   /**
-   * Delete an individual node.
+   * Delete an array of nodes.
+   *
+   * @param array $nodes
+   *   Array of todo node objects to delete.
    */
-  public function delete(NodeInterface $node): void;
+  public function delete(array $nodes): void;
 
   /**
    * Redirect to todos page.

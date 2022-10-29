@@ -32,8 +32,12 @@ class TodoHelperService implements TodoHelperServiceInterface {
   /**
    * {@inheritdoc}
    */
-  public function delete(NodeInterface $node): void {
-    $this->entityTypeManager->getStorage('node')->delete([$node]);
+  public function delete(array $nodes): void {
+    // If we have passed in node ids, then load them first.
+    if (is_numeric($nodes[0])) {
+      $nodes = $this->entityTypeManager->getStorage('node')->loadMultiple($nodes);
+    }
+    $this->entityTypeManager->getStorage('node')->delete($nodes);
   }
 
   /**
