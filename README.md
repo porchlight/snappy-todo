@@ -21,13 +21,13 @@
 ## Modules used and build process
 
 ### Admin Toolbar
-- just to make things easier to navigate on the admin side.
+- Just to make things easier to navigate on the admin side.
 
 ### Flag
-- this module is used for the "mark as done/mark as not done" functionality. Saves which nodes the user has marked as complete.
+- This module is used for the "mark as done/mark as not done" functionality. Saves which nodes the user has marked as complete.
 
 ### Node view redirect
-- this module keeps users from seeing individual node view, we just want to keep them on the todos page at all times, so this helps with that.
+- This module keeps users from seeing the individual node view, we just want to keep them on the todos page at all times, so this helps with that.
 
 ### Require login
-- forces users to login or register in order to see anything on the site.
+- Forces users to login or register in order to see anything on the site.
