@@ -56,3 +56,4 @@ function snappy_common_views_pre_render(ViewExecutable $view) {
     $view->element['#attached']['library'][] = 'snappy_common/todos';
   }
 }
+

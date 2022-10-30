@@ -42,10 +42,26 @@
   width: 33%;
   text-align: right;
 }
-.view-footer {
-  text-decoration: none;
-}
 .view-footer .selected {
   text-decoration: none;
   font-weight: bold;
+}
+@media only screen and (max-width: 840px){
+  .view-footer .todo-count {
+    float: none;
+    width: 100%;
+  }
+  .view-footer .filters {
+    width: 100%;
+    display: block;
+    text-align: left;
+  }
+  .view-footer .filters li {
+    margin-left: 0px;
+  }
+  .view-footer .clear-completed {
+    float: none;
+    width: 100%;
+    text-align: left;
+  }
 }
