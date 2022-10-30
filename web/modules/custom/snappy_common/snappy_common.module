@@ -1,7 +1,6 @@
 <?php
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\snappy_common\Entity\TodoNode;
 use Drupal\views\ViewExecutable;
 
 /**
