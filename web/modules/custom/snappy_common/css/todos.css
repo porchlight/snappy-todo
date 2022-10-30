@@ -14,3 +14,38 @@
   background-color: #e4e6eb;
   color: #050505;
 }
+
+.view-id-todo_s tr .complete {
+  text-decoration: line-through;
+}
+
+.view-footer {
+  display:  block;
+}
+.view-footer .todo-count {
+  float: left;
+  width: 33%;
+}
+.view-footer .filters {
+  width: 33%;
+  display: inline;
+  text-align: center;
+  margin: 0px;
+}
+.view-footer .filters li {
+  list-style-type: none;
+  display: inline;
+  margin: 0px 10px;
+}
+.view-footer .clear-completed {
+  float: right;
+  width: 33%;
+  text-align: right;
+}
+.view-footer {
+  text-decoration: none;
+}
+.view-footer .selected {
+  text-decoration: none;
+  font-weight: bold;
+}

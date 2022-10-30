@@ -10,25 +10,6 @@ use Drupal\views\ViewExecutable;
  */
 
 /**
- * Implements hook_module_implements_alter().
- */
-function snappy_common_module_implements_alter(&$implementations, $hook) {
-  if ($hook == 'theme') {
-    $group = $implementations['snappy_common'];
-    unset($implementations['snappy_common']);
-    $implementations['snappy_common'] = $group;
-  }
-}
-
-/**
- * Implements hook_theme().
- */
-function snappy_common_theme($existing, $type, $theme, $path) {
-  $module_path = drupal_get_path('module', 'snappy_common');
-  return drupal_find_theme_templates($existing, '.html.twig', $module_path);
-}
-
-/**
  * Implements hook_form_FORM_ID_alter() for FORM_ID().
  */
 function snappy_common_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
@@ -41,7 +22,13 @@ function snappy_common_form_node_form_alter(&$form, FormStateInterface $form_sta
   // Hide the extra options to make it look sleek.
   $form['revision_information']['#access'] = FALSE;
   unset($form['meta']);
-  // Add our submit handler.
+
+  // Remove the delete button from the edit form.
+  if ($form_id == 'node_todo_edit_form') {
+    $form['actions']['delete']['#access'] = FALSE;
+  }
+
+  // Add our submit handler to redirect back to todos page.
   foreach (array_keys($form['actions']) as $action) {
     if ($action != 'preview'
       && isset($form['actions'][$action]['#type'])

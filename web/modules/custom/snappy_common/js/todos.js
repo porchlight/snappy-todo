@@ -20,19 +20,19 @@
 
           // On click of "all" show everything.
           $('.view-id-todo_s a[href*="#all"]').on('click', function () {
-            $('.view-id-todo_s .views-row').removeClass('visually-hidden');
+            $('.view-id-todo_s tr').removeClass('visually-hidden');
           });
 
           // On click of "active" only show todos that haven't been done.
           $('.view-id-todo_s a[href*="#active"]').on('click', function () {
-            $('.view-id-todo_s .views-row .action-unflag').parents('.views-row').addClass('visually-hidden');
-            $('.view-id-todo_s .views-row .action-flag').parents('.views-row').removeClass('visually-hidden');
+            $('.view-id-todo_s tr .action-unflag').parents('tr').addClass('visually-hidden');
+            $('.view-id-todo_s tr .action-flag').parents('tr').removeClass('visually-hidden');
           });
 
           // On click of "completed" only show todos that have been done.
           $('.view-id-todo_s a[href*="#completed"]').on('click', function () {
-            $('.view-id-todo_s .views-row .action-unflag').parents('.views-row').removeClass('visually-hidden');
-            $('.view-id-todo_s .views-row .action-flag').parents('.views-row').addClass('visually-hidden');
+            $('.view-id-todo_s tr .action-unflag').parents('tr').removeClass('visually-hidden');
+            $('.view-id-todo_s tr .action-flag').parents('tr').addClass('visually-hidden');
           });
         });
       });
@@ -45,13 +45,15 @@
    * todos then show the "Clear completed" link.
    */
   function checkIfEmpty() {
-    if ($('.view-id-todo_s .views-row').length) {
-      var done = $('.view-id-todo_s .views-row .action-unflag').length;
+    if ($('.view-id-todo_s tr').length) {
+      var done = $('.view-id-todo_s tr .action-unflag').length;
       if (done > 0) {
         $('.view-id-todo_s .clear-completed').removeClass('visually-hidden');
+        $('.view-id-todo_s tr .action-unflag').parents('tr').children('.views-field-title').addClass('complete');
       }
       else {
         $('.view-id-todo_s .clear-completed').addClass('visually-hidden');
+        $('.view-id-todo_s tr .views-field-title').removeClass('complete');
       }
       $('.view-id-todo_s .todo-count').removeClass('visually-hidden');
       updateTodoCount();
@@ -67,7 +69,7 @@
    */
   function updateTodoCount() {
     // Count how many left.
-    var left = $('.view-id-todo_s .views-row .action-flag').length;
+    var left = $('.view-id-todo_s tr .action-flag').length;
     if (left > 0) {
       var todosLeft = Drupal.formatPlural(left, '1 item left', '@count items left');
       $('.view-id-todo_s .todo-count').text(todosLeft);
