@@ -1,0 +1,16 @@
+.view-id-todo_s .view-header {
+  margin-bottom: 15px;
+}
+
+.view-id-todo_s .view-header a {
+  background-color: #2494db;
+  border: none;
+  text-decoration: none;
+  color: #fff;
+  padding: 16px;
+}
+
+.view-id-todo_s .view-header a:hover{
+  background-color: #e4e6eb;
+  color: #050505;
+}

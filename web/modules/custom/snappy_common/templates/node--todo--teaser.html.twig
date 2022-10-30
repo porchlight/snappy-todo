@@ -21,13 +21,16 @@
 <article{{ attributes.addClass(classes) }}>
   <div{{ content_attributes.addClass('node__content', layout) }}>
     {{ content }}
-    <h2{{ title_attributes.addClass('node__title') }}>
-      <a href="{{ path('entity.node.edit_form', {'node': node.id}) }}" class="use-ajax" data-dialog-type="modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}">
-        {{ label }}
-      </a>
-    </h2>
-    <a href="{{ path('entity.node.delete_form', {'node': node.id}) }}" class="use-ajax" data-dialog-type="modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}">
+    <span>
+      {{ label }}
+    </span>
+    <ul>
+    <li><a href="{{ path('entity.node.edit_form', {'node': node.id}) }}" class="use-ajax" data-dialog-type="modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}">
+      {{ 'Edit'|t }}
+      </a></li>
+    <li><a href="{{ path('entity.node.delete_form', {'node': node.id}) }}" class="use-ajax" data-dialog-type="modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}">
       {{ 'Delete'|t }}
-    </a>
+      </a></li>
+    </ul>
   </div>
 </article>
