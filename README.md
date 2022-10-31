@@ -18,7 +18,7 @@
 - Click "All", "Active" or "Complete" to filter the list to show all todos, only active, or only completed todos
 - Make sure you have marked one as "done", this will expose the "Clear completed" link, click that to clear all completed todos.
 
-## Modules used and build process
+## Contrib modules used
 
 ### Admin Toolbar
 - Just to make things easier to navigate on the admin side.
@@ -31,3 +31,11 @@
 
 ### Require login
 - Forces users to login or register in order to see anything on the site.
+
+## Custom module functionality
+
+### Snappy Common
+- controller and service to handle the "Clear completed" functionality
+- .module to do a couple form alter functions and add a library to inject some css and js
+- js to hide/show things and update the todo counter
+- css to add a little bit of styling
