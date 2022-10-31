@@ -3,7 +3,7 @@
 ## Site setup
 - clone project
 - create a database and add your database configuration to your settings.php or in a settings.local.php
-- import the included database
+- import the included database (complete.sql.gz)
 - `drush uli` to login
 
 ## Steps to test
